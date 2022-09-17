@@ -11,7 +11,7 @@ window.onload =function (){
     //set cookie
     document.cookie = "cookie_token=" + token;
 
-    get("/v1/list_videos", loadVideoList);
+    get("http://home.jahe.io:18080/v1/list_videos", loadVideoList);
     document.addEventListener("fullscreenchange", function (event){
         console.log(event);
         i = i+1;
