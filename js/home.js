@@ -10,8 +10,18 @@ window.onload =function (){
     }
     //set cookie
     document.cookie = "cookie_token=" + token;
+    var xhr = new XMLHttpRequest ();
+    xhr.open("GET", "https://home.jahe.io:18080/v1/list_videos");
+    xhr.onload = function(e) {
+        if(this.status == 200){
+            let resp = JSON.parse(this.responseText);
+            console.log(resp['msg']);
+            loadVideoList(resp);
+        }
+    };
+    xhr.send();
 
-    get("http://home.jahe.io:18080/v1/list_videos", loadVideoList);
+
     document.addEventListener("fullscreenchange", function (event){
         console.log(event);
         i = i+1;
