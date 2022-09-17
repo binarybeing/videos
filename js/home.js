@@ -47,8 +47,8 @@ function loadVideoList(data){
 }
 function addVideo(video){
     let div= "  <div class='col-xs-12 col-md-6 col-lg-4'>" +
-            "    <a href='#' class='thumbnail play-btn' onclick=playVideo('"+video["streamUrl"]+"')>" +
-            "      <img src='"+video["coverUrl"]+"' alt='' style='object-fit: fill; height: 250px'>" +
+            "    <a href='#' class='thumbnail play-btn' onclick=playVideo('https://home.jahe.io:18080"+video["streamUrl"]+"')>" +
+            "      <img src='https://home.jahe.io:18080"+video["coverUrl"]+"' alt='' style='object-fit: fill; height: 250px'>" +
             "    </a>" +
             "    <h3>"+video["vedioName"]+"</h3><hr/>" +
             "  </div>";
