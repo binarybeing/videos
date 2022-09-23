@@ -10,10 +10,10 @@ window.onload =function (){
     }
     //set cookie
     document.cookie = "cookie_token=" + token;
-    var xhr = new XMLHttpRequest ();
+    let xhr = new XMLHttpRequest ();
     xhr.open("GET", "https://home.jahe.io:18080/v1/list_videos");
     xhr.onload = function(e) {
-        if(this.status == 200){
+        if(this.status === 200){
             let resp = JSON.parse(this.responseText);
             console.log(resp['msg']);
             loadVideoList(resp);
@@ -59,6 +59,14 @@ function playVideo(url){
     $(Media).attr("src", url);
     $(Media).css("display", "block");
     Media.play();
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+        console.log('isIOS');
+        return;
+    } else if (/(Android)/i.test(navigator.userAgent)) {
+        console.log('isAndroid');
+    } else {
+        console.log('isPC');
+    }
     Media.requestFullscreen({}).then();
 }
 
