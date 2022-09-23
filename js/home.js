@@ -58,6 +58,7 @@ function addVideo(video){
 function playVideo(url){
     $(Media).attr("src", url);
     $(Media).css("display", "block");
+    full(Media);
     Media.play();
     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
         console.log('isIOS');
@@ -67,7 +68,6 @@ function playVideo(url){
     } else {
         console.log('isPC');
     }
-    Media.requestFullscreen({}).then();
 }
 
 function get(uri, onSuccess){
@@ -82,4 +82,27 @@ function _getRandomString(len) {
         pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
     }
     return pwd;
+}
+
+function full(ele){
+    if (ele.requestFullscreen) {
+        ele.requestFullscreen();
+    } else if (ele.mozRequestFullScreen) {
+        ele.mozRequestFullScreen();
+    } else if (ele.webkitRequestFullscreen) {
+        ele.webkitRequestFullscreen();
+    } else if (ele.msRequestFullscreen) {
+        ele.msRequestFullscreen();
+    }
+}
+function exitFullscreen(){
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
 }
