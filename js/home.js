@@ -85,15 +85,16 @@ function _getRandomString(len) {
 }
 
 function full(ele){
-    if (ele.requestFullscreen) {
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && ele.webkitEnterFullscreen) {
+        console.log('isIOS');
+        ele.webkitEnterFullscreen();
+    } else if (/(Android)/i.test(navigator.userAgent) && ele.requestFullscreen) {
+        console.log('isAndroid');
         ele.requestFullscreen();
-    } else if (ele.mozRequestFullScreen) {
-        ele.mozRequestFullScreen();
-    } else if (ele.webkitRequestFullscreen) {
-        ele.webkitRequestFullscreen();
-    } else if (ele.msRequestFullscreen) {
-        ele.msRequestFullscreen();
+    } else {
+        console.log('isPC');
     }
+    ele.requestFullscreen();
 }
 function exitFullscreen(){
     if (document.exitFullscreen) {
