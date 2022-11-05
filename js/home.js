@@ -1,6 +1,6 @@
 var Media = document.getElementById('video_player');
 let i=0;
-local_host="https://binarybeing.tpddns.cn:18080"
+local_host="https://home.jahe.io:18080"
 window.onload =function (){
     //generate uuid
     let storage = window.localStorage;
