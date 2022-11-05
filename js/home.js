@@ -1,5 +1,6 @@
 var Media = document.getElementById('video_player');
 let i=0;
+local_host="https://binarybeing.tpddns.cn:18080"
 window.onload =function (){
     //generate uuid
     let storage = window.localStorage;
@@ -11,7 +12,7 @@ window.onload =function (){
     //set cookie
     document.cookie = "cookie_token=" + token;
     let xhr = new XMLHttpRequest ();
-    xhr.open("GET", "https://home.jahe.io:18080/v1/list_videos");
+    xhr.open("GET", local_host+"/v1/list_videos");
     xhr.onload = function(e) {
         if(this.status === 200){
             let resp = JSON.parse(this.responseText);
@@ -47,8 +48,8 @@ function loadVideoList(data){
 }
 function addVideo(video){
     let div= "  <div class='col-xs-12 col-md-6 col-lg-4'>" +
-            "    <a href='#' class='thumbnail play-btn' onclick=playVideo('https://home.jahe.io:18080"+video["streamUrl"]+"')>" +
-            "      <img src='https://home.jahe.io:18080"+video["coverUrl"]+"' alt='' style='object-fit: fill; height: 250px'>" +
+            "    <a href='#' class='thumbnail play-btn' onclick=playVideo('"+local_host+video["streamUrl"]+"')>" +
+            "      <img src='"+local_host+video["coverUrl"]+"' alt='' style='object-fit: fill; height: 250px'>" +
             "    </a>" +
             "    <h3>"+video["vedioName"]+"</h3><hr/>" +
             "  </div>";
